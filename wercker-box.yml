@@ -1,6 +1,12 @@
 name: java7-oracle
 version: 0.0.1
-description: Java7 box provisioned with the Oracle distribution via the webupd8team ppa
+description: Java7 box provisioned with the Oracle distribution via the webupd8team ppa. Comes with maven, ant and sbt
+keywords:
+  - java
+  - ant
+  - sbt
+  - maven
+  - oracle
 type: main
 os: ubuntu@12.04
 env:
