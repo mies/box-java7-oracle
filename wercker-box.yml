@@ -38,6 +38,6 @@ script: |-
   sudo apt-get install ant ant-contrib ivy -y -qq
 
    # We should have ant and ivy available
-  type ant || echo "I expected ant to be available. Aborting."; exit 1;
-  type ivy || echo "I expected ivy to be available. Aborting."; exit 1;
-  type mvn || echo "I expected maven to be available. Aborting."; exit 1;
+  type ant || { echo "I expected ant to be available. Aborting."; exit 1; }
+  type ivy || { echo "I expected ivy to be available. Aborting."; exit 1; }
+  type mvn || { echo "I expected maven to be available. Aborting."; exit 1; }
