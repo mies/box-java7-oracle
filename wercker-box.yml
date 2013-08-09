@@ -13,6 +13,7 @@ env:
   SBT_OPTS: -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M
   IVY_CACHE_DIR: '"$WERCKER_CACHE_DIR/ivy"'
 script: |-
+  # Install Java7
   sudo apt-get update
   sudo apt-get install python-software-properties curl wget -y
   sudo add-apt-repository ppa:webupd8team/java -y
@@ -21,6 +22,7 @@ script: |-
   echo debconf shared/accepted-oracle-license-v1-1 seen true |  sudo debconf-set-selections
   sudo apt-get install oracle-java7-installer -qq
 
+  # Install sbt
   wget http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch//0.12.3/sbt-launch.jar
   printf 'java -Dsbt.ivy.home=${IVY_CACHE_DIR} -Xmx512M ${SBT_OPTS} -jar `dirname $0`/sbt-launch.jar "$@"' > sbt
   sudo chmod +x ./sbt
@@ -28,8 +30,12 @@ script: |-
   sudo mv sbt-launch.jar /usr/share/sbt-launch.jar
   sudo ln -s /usr/share/sbt /usr/bin/sbt
   sudo ln -s /usr/share/sbt-launch.jar /usr/bin/sbt-launch.jar
-  
+
+  # Install maven
   sudo apt-get install maven
+
+  # Install ant
+  sudo apt-get install ant ant-contrib ivy -y -qq
 
    # We should have ant and ivy available
   type ant || echo "I expected ant to be available. Aborting."; exit 1;
