@@ -1,5 +1,5 @@
 name: java7-oracle
-version: 0.0.4
+version: 0.0.5
 description: Java7 box provisioned with the Oracle distribution via the webupd8team ppa. Comes with maven, ant and sbt
 keywords:
   - java
